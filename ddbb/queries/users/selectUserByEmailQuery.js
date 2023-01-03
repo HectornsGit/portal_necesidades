@@ -6,12 +6,13 @@ const selectUserByEmailQuery = async (email) => {
   let connection;
 
   try {
-    connection = await getConnection();
+    connection = await getConnection;
 
     const [users] = await connection.query(
       `
         SELECT id, password FROM users WHERE email = ?
-        `[email]
+        `,
+      [email]
     );
 
     if (users.length < 1) {

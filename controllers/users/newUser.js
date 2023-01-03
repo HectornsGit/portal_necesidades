@@ -1,29 +1,25 @@
 require("dotenv").config();
-const getConnection = require("../../ddbb/getConnection");
 const insertUserQuery = require("../../ddbb/queries/users/insertUserQuery");
-const newUser = async (req, res, next) => {
-  let connection;
 
+const newUser = async (req, res, next) => {
   try {
-    connection = await getConnection;
+    //Extraemos del body la información necesaria para crear el usuario
     const { username, email, password } = req.body;
 
+    //Comprobamos que estén todos los campos necesarios
     if (!username || !email || !password) {
       throw generateError("Faltan campos", 400);
     }
-
+    //LLamamos a la función que inserta el nuevo usuario.
     await insertUserQuery(username, email, password);
 
+    //Enviamos la respuesta l
     res.send({
       status: "ok",
       message: "Usuario creado.",
     });
   } catch (err) {
-  } finally {
-    if (connection) {
-      connection.release();
-      process.exit();
-    }
+    next(err);
   }
 };
 module.exports = newUser;

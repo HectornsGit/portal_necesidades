@@ -28,7 +28,7 @@ app.post("/users", newUser);
 app.post("/users/login", loginUser);
 
 // Obtener información sobre el usuario del token.
-app.get("/users");
+app.get("/users/");
 
 /**
  * ##########################
