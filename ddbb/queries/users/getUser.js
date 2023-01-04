@@ -8,8 +8,8 @@ const getUser = async (req, res, next) => {
 
     const user = await selectUserByEmailQuery(idUser);
 
-    if (!user.active) {
-      throw generateError("Usuario no encontrado", 404);
+    /* if (!user.active) {
+      throw generateError("Usuario no encontrado", 404); */
 
       const userInfo = {
         username: user.username,
@@ -27,7 +27,6 @@ const getUser = async (req, res, next) => {
           user: userInfo,
         },
       });
-    }
   } catch (err) {
     next(err);
   }

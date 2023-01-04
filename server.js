@@ -3,8 +3,8 @@ const express = require("express");
 const fileUpload = require("express-fileupload");
 const morgan = require("morgan");
 const cors = require("cors");
-const { PORT } = process.env;
-
+const { PORT, UPLOADS_DIR } = process.env;
+const isAuth = require("./middlewares/isAuth");
 const app = express();
 
 app.use(cors());
@@ -20,7 +20,12 @@ app.use(fileUpload());
  * ############################
  */
 
-const { loginUser, newUser } = require("./controllers/users/index");
+const {
+  loginUser,
+  newUser,
+  getUser,
+  editAvatar,
+} = require("./controllers/users/index");
 
 // Registrar un nuevo usuario.
 app.post("/users", newUser);
@@ -30,21 +35,34 @@ app.post("/users/login", loginUser);
 
 // Obtener información sobre el usuario del token.
 app.get("/users/");
+//Obtener información sobre un usuario
+app.get("/users/:idUser", getUser);
+
+// Editar avatar de usuario.
+app.put("/users/avatar", isAuth, editAvatar);
 
 /**
  * ##########################
  * ## Controladores entries ##
  * ##########################
  */
+const {
+  newEntry,
+  listEntries,
+  voteEntry,
+} = require("./controllers/entries/index");
 
 // Crear una nueva entrada.
-app.post("/entries");
+app.post("/entries", isAuth, newEntry);
 
 // Listar todas las entradas.
-app.get("/entries", (req, res) => {});
+app.get("/entries", listEntries);
 
 // Obtener información de una entrada concreta.
 app.get("/entries/:idEntry");
+
+// Votar una entrada.
+app.post("/entries/:idEntry/votes", isAuth, voteEntry);
 
 /**
  * ###################################

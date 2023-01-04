@@ -2,14 +2,14 @@ const getConnection = require("../../getConnection");
 
 const { generateError } = require("../../../helpers");
 
-const selectUserByEmailQuery = async (idUser) => {
+const selectUserByIdQuery = async (idUser) => {
   let connection;
 
   try {
-    connection = await getConnection();
+    connection = await getConnection;
 
     const [users] = await connection.query(
-      `SELECT id, email, password,username,registration_date FROM users WHERE id = ?`,
+      `SELECT id, email,avatar, password,username,registration_date FROM users WHERE id = ?`,
       [idUser]
     );
 
@@ -23,4 +23,4 @@ const selectUserByEmailQuery = async (idUser) => {
   }
 };
 
-module.export = selectUserByEmailQuery;
+module.exports = selectUserByIdQuery;

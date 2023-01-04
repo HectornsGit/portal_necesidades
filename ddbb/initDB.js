@@ -24,7 +24,7 @@ const main = async () => {
       password VARCHAR(100) NOT NULL,
       username VARCHAR(30) NOT NULL,
       bio VARCHAR(200),
-      avatar VARCHAR(100),
+      avatar VARCHAR(100) DEFAULT "default_avatar.png",
       registration_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP
       )`);
 

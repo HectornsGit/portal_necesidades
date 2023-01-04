@@ -6,7 +6,7 @@
 
 - POST [/users] Permite registrar al usuario (email, contraseña, nombre, bio,foto) ✅
 - POST [/users/login] Login de usuario(email,contraseña) ✅
-- GET [/users] Devuelve la información del usuario **TOKEN** ✅
+- GET [/users/:idUser] Devuelve la información de un usuario ✅
 - (OPCIONAL)PUT [/users] Edita la información del usuario **TOKEN**
 
 ## Endpoints de entries
