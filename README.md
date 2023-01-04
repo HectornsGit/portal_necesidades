@@ -4,9 +4,9 @@
 
 ## Endpoints de usuario
 
-- POST [/users] Permite registrar al usuario (email, contraseña, nombre, bio,foto)
-- POST [/users/login] Login de usuario(email,contraseña)
-- GET [/users] Devuelve la información del usuario **TOKEN**
+- POST [/users] Permite registrar al usuario (email, contraseña, nombre, bio,foto) ✅
+- POST [/users/login] Login de usuario(email,contraseña) ✅
+- GET [/users] Devuelve la información del usuario **TOKEN** ✅
 - (OPCIONAL)PUT [/users] Edita la información del usuario **TOKEN**
 
 ## Endpoints de entries
