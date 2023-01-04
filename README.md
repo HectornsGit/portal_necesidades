@@ -18,29 +18,39 @@
 
 ## Entidades
 
-\***\*\*\*\*\*\*\***FALTA ACABAR ESTE CAMPO\***\*\*\*\*\*\*\***
-
 - User:
 
   - id
   - email
   - password
+  - username
+  - bio
   - avatar
-  - role
-  - createdAt
-  - modifiedAt
+  - registration_date
 
-- Tweet:
+- Entries:
 
   - id
-  - idUser
-  - text
-  - image (opcional)
-  - createdAt
+  - user_id i
+  - title
+  - description
+  - file_name
+  - solved
+  - category
+  - creation_date
 
-- Likes:
+- comments:
 
   - id
-  - idUser
-  - idTweet
-  - createdAt
+  - user_id
+  - entry_id
+  - file_name
+  - creation_date
+
+- ratings:
+
+  - id
+  - user_id
+  - comment_id
+  - rating
+  - creation_date
