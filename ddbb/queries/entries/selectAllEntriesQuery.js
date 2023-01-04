@@ -4,6 +4,7 @@ const { generateError } = require("../../../helpers");
 const selectAllEntriesQuery = async () => {
   let connection;
   try {
+    connection = await getConnection;
     const [entries] =
       await connection.query(`SELECT id, title, description, file_name, category
                                               FROM entries`);
@@ -12,7 +13,7 @@ const selectAllEntriesQuery = async () => {
     }
     return entries;
   } finally {
-    if (connection) connection.release();
+    if (connection) connection.release;
   }
 };
 module.exports = selectAllEntriesQuery;
