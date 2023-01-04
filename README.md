@@ -31,7 +31,7 @@
 - Entries:
 
   - id
-  - user_id i
+  - user_id
   - title
   - description
   - file_name
