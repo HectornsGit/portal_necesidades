@@ -4,16 +4,18 @@
 
 ## Endpoints de usuario
 
-- POST [/users] Permite registrar al usuario (email, contraseña, nombre, bio,foto) ✅
+- POST [/users] Permite registrar al usuario (email, contraseña, nombre, bio,foto) ✅ (Falta gestionar avatar)
 - POST [/users/login] Login de usuario(email,contraseña) ✅
 - GET [/users/:idUser] Devuelve la información de un usuario ✅
 - (OPCIONAL)PUT [/users] Edita la información del usuario **TOKEN**
 
 ## Endpoints de entries
 
-- POST [/entries] Permite crear una entrada **TOKEN**
-- GET [/entries] Permite ver las entradas actuales
-- POST [/entries/:idEntry] Permite comentar una entrada **TOKEN**
+- POST [/entries] Permite crear una entrada **TOKEN** ✅ (Falta gestionar archivos no imagen)
+- GET [/entries] Permite ver las entradas actuales ✅
+- GET [/entries?category=Otros] Permite ver las entradas filtrándolas por categorías ✅
+- POST [/entries/:idEntry] Permite comentar una entrada **TOKEN** ✅
+- POST [/entries/:idEntry/:idComment] Permite valorar un comentario **TOKEN**
 - (OPCIONAL)##DELETE[/entries/:idEntry] Permite borrar una entrada **TOKEN**
 
 ## Entidades

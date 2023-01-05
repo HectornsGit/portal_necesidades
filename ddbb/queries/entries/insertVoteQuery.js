@@ -20,7 +20,7 @@ const insertVoteQuery = async (value, idUser, idEntry) => {
 
     //insertamos el voto
     await connection.query(
-      `INSERT INTO retings (rating, user_id, comment_id, creation_date)
+      `INSERT INTO ratings (rating, user_id, comment_id, creation_date)
     VALUES(?,?,?,?)`,
       [value, idUser, idEntry, new Date()]
     );

@@ -19,7 +19,6 @@ const insertEntryQuery = async (
         `,
       [title, description, file_name, category, new Date(), idUser]
     );
-    console.log(newEntry);
 
     return newEntry.insertId;
   } finally {

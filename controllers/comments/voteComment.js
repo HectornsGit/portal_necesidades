@@ -1,18 +1,17 @@
-const selectEntryByIdQuery = require("../../ddbb/queries/entries/selectEntryByIdQuery");
+const selectCommentByIdQuery = require("../../ddbb/queries/comments/selectCommentByIdQuery");
 const insertVoteQuery = require("../../ddbb/queries/entries/insertVoteQuery");
 
 const { generateError } = require("../../helpers");
 
-const voteEntry = async (req, res, next) => {
+const voteComment = async (req, res, next) => {
   try {
-    const { idEntry } = req.params;
+    const { idComment } = req.params;
 
     const { value } = req.body;
-
-    const entry = await selectEntryByIdQuery(idEntry);
+    const comment = await selectCommentByIdQuery(idComment);
 
     //Restringimos el auto-voto
-    if (entry.idUser === req.user.id) {
+    if (comment.idUser === req.user.id) {
       throw generateError("No puedes valorar tu propio comment", 400);
     }
     //Array con valoraciones validas
@@ -24,7 +23,7 @@ const voteEntry = async (req, res, next) => {
     }
 
     //Valoramos la entrada
-    await insertVoteQuery(value, req.user.id, idEntry);
+    await insertVoteQuery(value, req.user.id, idComment);
 
     res.send({
       status: "ok",
@@ -35,4 +34,4 @@ const voteEntry = async (req, res, next) => {
   }
 };
 
-module.exports = voteEntry;
+module.exports = voteComment;

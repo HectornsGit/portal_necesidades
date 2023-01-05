@@ -19,17 +19,16 @@ const newEntry = async (req, res, next) => {
       req.user.id
     );
 
-    const photos = [];
-
-    if (req.files) {
-      for (const photo of Object.values(req.files).slice(0, 3)) {
-        const photoName = await savePhoto(photo, 1);
-
-        photos.push(photoName);
-
-        await insertPhotoQuery(photoName, idEntry);
-      }
+    //TEMPORAL
+    if (req.files?.length == 1) {
+      const photoName = await savePhoto(req.files, 1);
+      await insertPhotoQuery(photoName, idEntry);
     }
+
+    res.send({
+      status: "ok",
+      message: "Entrada Creada",
+    });
   } catch (err) {
     next(err);
   }

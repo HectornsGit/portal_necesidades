@@ -35,7 +35,7 @@ const main = async () => {
       FOREIGN KEY(user_id) REFERENCES users(id),
       title VARCHAR(20) NOT NULL,
       description TEXT NOT NULL,
-      file_name VARCHAR(30),
+      file_name VARCHAR(100),
       solved BOOLEAN DEFAULT false,
       category ENUM("Matemáticas","Traducciones","Modelado 3D","Ilustración","Audio","Otros") DEFAULT "Otros",
       creation_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP
@@ -48,6 +48,7 @@ const main = async () => {
       FOREIGN KEY(user_id) REFERENCES users(id),
       entry_id int UNSIGNED NOT NULL,
       FOREIGN KEY(entry_id) REFERENCES entries(id),
+      text TEXT,
       file_name VARCHAR(100),
       creation_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP
       )`);

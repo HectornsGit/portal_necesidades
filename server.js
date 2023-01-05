@@ -35,6 +35,7 @@ app.post("/users/login", loginUser);
 
 // Obtener información sobre el usuario del token.
 app.get("/users/");
+
 //Obtener información sobre un usuario
 app.get("/users/:idUser", getUser);
 
@@ -50,6 +51,7 @@ const {
   newEntry,
   listEntries,
   voteEntry,
+  getEntry,
 } = require("./controllers/entries/index");
 
 // Crear una nueva entrada.
@@ -59,10 +61,21 @@ app.post("/entries", isAuth, newEntry);
 app.get("/entries", listEntries);
 
 // Obtener información de una entrada concreta.
-app.get("/entries/:idEntry");
+app.get("/entries/:idEntry", getEntry);
 
-// Votar una entrada.
-app.post("/entries/:idEntry/votes", isAuth, voteEntry);
+/**
+ * ############################
+ * ## Controladores comentarios ##
+ * ############################
+ */
+
+const { newComment, voteComment } = require("./controllers/comments/index");
+
+// Crear un nuevo comment.
+app.post("/entries/:idEntry", isAuth, newComment);
+
+// Votar un comment.
+app.post("/entries/:idEntry/:idComment", isAuth, voteComment);
 
 /**
  * ###################################
