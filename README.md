@@ -11,11 +11,11 @@
 
 ## Endpoints de entries
 
-- POST [/entries] Permite crear una entrada **TOKEN** ✅ (Falta gestionar archivos no imagen)
+- POST [/entries] Permite crear una entrada **TOKEN** ✅
 - GET [/entries] Permite ver las entradas actuales ✅
 - GET [/entries?category=Otros] Permite ver las entradas filtrándolas por categorías ✅
 - POST [/entries/:idEntry] Permite comentar una entrada **TOKEN** ✅
-- POST [/entries/:idEntry/:idComment] Permite valorar un comentario **TOKEN**
+- POST [/entries/:idEntry/:idComment] Permite valorar un comentario **TOKEN**✅
 - (OPCIONAL)##DELETE[/entries/:idEntry] Permite borrar una entrada **TOKEN**
 
 ## Entidades

@@ -1,4 +1,5 @@
 require("dotenv").config();
+const path = require("path");
 const express = require("express");
 const fileUpload = require("express-fileupload");
 const morgan = require("morgan");
@@ -14,6 +15,7 @@ app.use(morgan("dev"));
 app.use(express.json());
 
 app.use(fileUpload());
+
 /**
  * ############################
  * ## Controladores usuarios ##
@@ -50,7 +52,6 @@ app.put("/users/avatar", isAuth, editAvatar);
 const {
   newEntry,
   listEntries,
-  voteEntry,
   getEntry,
 } = require("./controllers/entries/index");
 
@@ -62,6 +63,20 @@ app.get("/entries", listEntries);
 
 // Obtener información de una entrada concreta.
 app.get("/entries/:idEntry", getEntry);
+
+app.post("/upload", (req, res) => {
+  let newFile = req.files.file1;
+  console.log();
+  newFile.mv(
+    `./uploads/${new Date().toDateString()}-${newFile.name}`,
+    (err) => {
+      if (err) {
+        return res.status(500).send({ message: err });
+      }
+      return res.status(200).send("File upload");
+    }
+  );
+});
 
 /**
  * ############################

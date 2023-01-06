@@ -9,6 +9,7 @@ const loginUser = async (req, res, next) => {
   try {
     const { email, password } = req.body;
 
+    //Si falta algún campo lanzamos un error.
     if (!email || !password) {
       throw generateError("Faltan campos", 404);
     }
@@ -16,7 +17,7 @@ const loginUser = async (req, res, next) => {
     //Obtenemos el usuario del body
     const user = await selectUserByEmailQuery(email);
 
-    //Comprobamos contrasena
+    //Comprobamos contraseña
     const validPassword = await bcrypt.compare(password, user.password);
 
     if (!validPassword) {

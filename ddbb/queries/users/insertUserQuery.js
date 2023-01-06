@@ -4,7 +4,13 @@ const bcrypt = require("bcrypt");
 
 const { generateError } = require("../../../helpers");
 
-const insertUserQuery = async (username, email, password) => {
+const insertUserQuery = async (
+  username,
+  email,
+  password,
+  bio,
+  avatar = "default_avatar.png"
+) => {
   let connection;
 
   try {
@@ -26,9 +32,9 @@ const insertUserQuery = async (username, email, password) => {
 
     //Insertamos el usuario en la base de datos.
     await connection.query(
-      `INSERT INTO users (email, password, username, registration_date)
-      VALUES (?, ?, ?, ?)`,
-      [email, hashPass, username, new Date()]
+      `INSERT INTO users (email, password, username ,bio ,avatar, registration_date)
+      VALUES (?, ?, ?, ? ,? ,?)`,
+      [email, hashPass, username, bio, avatar, new Date()]
     );
   } finally {
     //Cerramos la conexión con la base de datos, si hay una.

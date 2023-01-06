@@ -4,6 +4,7 @@ const getEntry = async (req, res, next) => {
   try {
     const { idEntry } = req.params;
 
+    //seleccionamos la entry por el id
     const entry = await selectEntryByIdQuery(idEntry);
 
     res.send({

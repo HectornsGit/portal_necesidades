@@ -8,12 +8,12 @@ const insertVoteQuery = async (value, idUser, idEntry) => {
   try {
     connection = await getConnection;
 
-    //comprobamos si el usuario ya voto
+    //comprobamos si el usuario ya votó.
     const [votes] = await connection.query(
       `SELECT id FROM ratings WHERE user_id = ? AND comment_id = ?`,
       [idUser, idEntry]
     );
-
+    //Si lo hizo lanzamos un error.
     if (votes.length > 0) {
       throw generateError("Ya valoraste esta entrada", 403);
     }

@@ -1,29 +1,22 @@
 const insertEntryQuery = require("../../ddbb/queries/entries/insertEntryQuery");
-const insertPhotoQuery = require("../../ddbb/queries/entries/insertPhotoQuery");
 
-const { generateError, savePhoto } = require("../../helpers");
+const { generateError, saveFile } = require("../../helpers");
 
 const newEntry = async (req, res, next) => {
   try {
-    const { title, description, file_name, category } = req.body;
+    const { title, description, category } = req.body;
+    const files = req.files;
 
-    if (!title || !description || !file_name || !category) {
+    //Si falta alguno de estos campos generamos un error.
+    if (!title || !description || !category || !files) {
       throw generateError("Faltan campos", 400);
     }
 
-    const idEntry = await insertEntryQuery(
-      title,
-      description,
-      file_name,
-      category,
-      req.user.id
-    );
+    //Guardamos el archivo a subir y su nombre.
+    const fileName = saveFile(req.files.file);
 
-    //TEMPORAL
-    if (req.files?.length == 1) {
-      const photoName = await savePhoto(req.files, 1);
-      await insertPhotoQuery(photoName, idEntry);
-    }
+    //Guardamos la entrada en la base de datos.
+    await insertEntryQuery(title, description, fileName, category, req.user.id);
 
     res.send({
       status: "ok",
