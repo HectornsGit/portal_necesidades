@@ -4,9 +4,9 @@ const sharp = require("sharp");
 const { v4: uuid } = require("uuid");
 const { UPLOADS_DIR } = process.env;
 /**
- * ################
- * ## Save Avatar ##
- * ################
+ * ##################
+ * ## Save Avatar  ##
+ * ##################
  */
 //Función que nos permite redimensionar y guardar los avatares.
 //----------------------------------------------------------------------------------------------------------//
@@ -41,29 +41,28 @@ const saveAvatar = async (img) => {
 
 /**
  * ##################
- * ## Delete Photo ##
+ * ## Delete File  ##
  * ##################
  */
 
-const deletePhoto = async (imgName) => {
+const deleteFile = async (fileName) => {
   try {
-    const photoPath = path.join(__dirname, UPLOADS_DIR, imgName);
-
+    const filePath = path.join(__dirname, UPLOADS_DIR, fileName);
     try {
-      await fs.access(photoPath);
+      await fs.access(filePath);
     } catch {
       return;
     }
 
-    await fs.unlink(photoPath);
+    await fs.unlink(filePath);
   } catch {
-    throw generateError("Error al eliminar la imagen del servidor");
+    throw generateError("Error al eliminar el archivo del servidor");
   }
 };
 
 /**
  * ####################
- * ##    SAVE FILE   ##
+ * ##    Save File   ##
  * ####################
  */
 //Función que nos permite guardar archivos en el disco duro y devuelve el nombre con el que se han guardado.
@@ -100,4 +99,4 @@ const generateError = (msg, status) => {
   return err;
 };
 
-module.exports = { generateError, saveAvatar, deletePhoto, saveFile };
+module.exports = { generateError, saveAvatar, deleteFile, saveFile };

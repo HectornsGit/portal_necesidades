@@ -1,10 +1,9 @@
 require("dotenv").config();
-const path = require("path");
 const express = require("express");
 const fileUpload = require("express-fileupload");
 const morgan = require("morgan");
 const cors = require("cors");
-const { PORT, UPLOADS_DIR } = process.env;
+const { PORT } = process.env;
 const isAuth = require("./middlewares/isAuth");
 const app = express();
 
@@ -53,6 +52,7 @@ const {
   newEntry,
   listEntries,
   getEntry,
+  deleteEntry,
 } = require("./controllers/entries/index");
 
 // Crear una nueva entrada.
@@ -64,38 +64,41 @@ app.get("/entries", listEntries);
 // Obtener información de una entrada concreta.
 app.get("/entries/:idEntry", getEntry);
 
-app.post("/upload", (req, res) => {
-  let newFile = req.files.file1;
-  console.log();
-  newFile.mv(
-    `./uploads/${new Date().toDateString()}-${newFile.name}`,
-    (err) => {
-      if (err) {
-        return res.status(500).send({ message: err });
-      }
-      return res.status(200).send("File upload");
-    }
-  );
-});
+//Borrar una entrada
+app.delete("/entries/:idEntry", isAuth, deleteEntry);
 
 /**
- * ############################
+ * ###############################
  * ## Controladores comentarios ##
- * ############################
+ * ###############################
  */
 
-const { newComment, voteComment } = require("./controllers/comments/index");
+const { newComment, deleteComment } = require("./controllers/comments/index");
 
-// Crear un nuevo comment.
+// Crear un nuevo comentario.
 app.post("/entries/:idEntry", isAuth, newComment);
 
-// Votar un comment.
-app.post("/entries/:idEntry/:idComment", isAuth, voteComment);
+//Borrar un comentario
+app.delete("/entries/:idEntry/:idComment", isAuth, deleteComment);
 
 /**
- * ###################################
- * ## Middelware de error/ not fund ##
- * ###################################
+ * ################################
+ * ## Controladores Valoraciones ##
+ * ################################
+ */
+
+const { newRating, deleteRating } = require("./controllers/ratings/index");
+
+//Crear una nueva valoración.
+app.post("/entries/:idEntry/:idComment", isAuth, newRating);
+
+//Borrar una valoración.
+app.delete("/entries/:idEntry/:idComment/:idRating", isAuth, deleteRating);
+
+/**
+ * ####################################
+ * ## Middelware de error/ not found ##
+ * ####################################
  */
 
 //Middelware de error.

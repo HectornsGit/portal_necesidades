@@ -1,4 +1,5 @@
 const newEntry = require("./newEntry");
 const listEntries = require("./listEntries");
 const getEntry = require("./getEntry");
-module.exports = { newEntry, listEntries, getEntry };
+const deleteEntry = require("./deleteEntry");
+module.exports = { newEntry, listEntries, getEntry, deleteEntry };

@@ -1,7 +1,7 @@
 {
   "name": "portal_ayuda",
   "version": "1.0.0",
-  "description": "",
+  "description": "pPortal donde se pide ayuda para diferentes problemas (editar una imagen, traducir un texto...) y otra persona puede solucionarlas.",
   "main": "server.js",
   "scripts": {
     "initDB": "node ddbb/initDB",

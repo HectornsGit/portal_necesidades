@@ -1,3 +1,3 @@
 const newComment = require("./newComment");
-const voteComment = require("./voteComment");
-module.exports = { newComment, voteComment };
+const deleteComment = require("./deleteComment");
+module.exports = { newComment, deleteComment };

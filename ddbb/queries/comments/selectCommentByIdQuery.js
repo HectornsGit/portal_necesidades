@@ -8,12 +8,12 @@ const selectCommentByIdQuery = async (idComment) => {
 
     //Seleccionamos el comentario segun su id.
     const [comments] = await connection.query(
-      `SELECT user_id, entry_id, text, file_name, creation_date
+      `SELECT id, user_id, entry_id, text, file_name, creation_date
        FROM comments WHERE id = ?`,
       [idComment]
     );
 
-    //Verificamos si el comentario existe
+    //Verificamos si el comentario existe.
     if (comments.length < 1) {
       throw generateError("No se ha encontrado ningun comentario", 404);
     }

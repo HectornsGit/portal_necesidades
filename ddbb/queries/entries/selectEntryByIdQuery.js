@@ -8,7 +8,7 @@ const selectEntryByIdQuery = async (idEntry) => {
 
     //Seleccionamos la entry segun su id
     const [entries] = await connection.query(
-      `SELECT id, title, description, file_name, category
+      `SELECT id, user_id, title, description, file_name, category
        FROM entries WHERE id = ?`,
       [idEntry]
     );

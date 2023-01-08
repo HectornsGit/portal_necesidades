@@ -8,7 +8,7 @@ const selectEntryByCategoryQuery = async (category) => {
 
     //Seleccionamos la Entry segun la categoria establecida.
     const [entries] = await connection.query(
-      `SELECT id, title, description, file_name, category
+      `SELECT id, user_id, title, description, file_name, category
        FROM entries WHERE category = ?`,
       [category]
     );

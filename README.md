@@ -1,10 +1,10 @@
 # Portal de necesidades
 
-- Backend de un portal donde se pide ayuda para diferentes problemas (editar una imagen, traducir un texto...) y otra persona puede solucionarlas.
+Backend de un portal donde se pide ayuda para diferentes problemas (editar una imagen, traducir un texto...) y otra persona puede solucionarlas.
 
 ## Endpoints de usuario
 
-- POST [/users] Permite registrar al usuario (email, contraseña, nombre, bio,foto) ✅ (Falta gestionar avatar)
+- POST [/users] Permite registrar al usuario (email, contraseña, nombre, bio,foto) ✅
 - POST [/users/login] Login de usuario(email,contraseña) ✅
 - GET [/users/:idUser] Devuelve la información de un usuario ✅
 - (OPCIONAL)PUT [/users] Edita la información del usuario **TOKEN**
@@ -16,7 +16,9 @@
 - GET [/entries?category=Otros] Permite ver las entradas filtrándolas por categorías ✅
 - POST [/entries/:idEntry] Permite comentar una entrada **TOKEN** ✅
 - POST [/entries/:idEntry/:idComment] Permite valorar un comentario **TOKEN**✅
-- (OPCIONAL)##DELETE[/entries/:idEntry] Permite borrar una entrada **TOKEN**
+- (OPCIONAL)##DELETE[/entries/:idEntry] Permite borrar una entrada **TOKEN**✅
+- (OPCIONAL)##DELETE[/entries/:idEntry/:idComment] Permite borrar un comentario **TOKEN**✅
+- (OPCIONAL)##DELETE[/entries/:idEntry/:idComment/:idRating] Permite borrar una valoración **TOKEN**✅
 
 ## Entidades
 

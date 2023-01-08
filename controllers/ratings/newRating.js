@@ -3,7 +3,7 @@ const insertVoteQuery = require("../../ddbb/queries/comments/insertVoteQuery");
 
 const { generateError } = require("../../helpers");
 
-const voteComment = async (req, res, next) => {
+const newRating = async (req, res, next) => {
   try {
     //Obtenemos la información necesaria de nuestra request.
     const { idComment } = req.params;
@@ -36,4 +36,4 @@ const voteComment = async (req, res, next) => {
   }
 };
 
-module.exports = voteComment;
+module.exports = newRating;

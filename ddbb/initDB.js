@@ -24,7 +24,7 @@ const main = async () => {
       password VARCHAR(100) NOT NULL,
       username VARCHAR(30) NOT NULL,
       bio VARCHAR(200),
-      avatar VARCHAR(100) DEFAULT "default_avatar.png",
+      avatar VARCHAR(200) DEFAULT "default_avatar.png",
       registration_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP
       )`);
 
@@ -33,9 +33,9 @@ const main = async () => {
       id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
       user_id int UNSIGNED NOT NULL,
       FOREIGN KEY(user_id) REFERENCES users(id),
-      title VARCHAR(20) NOT NULL,
+      title VARCHAR(40) NOT NULL,
       description TEXT NOT NULL,
-      file_name VARCHAR(100),
+      file_name VARCHAR(200),
       solved BOOLEAN DEFAULT false,
       category ENUM("Matemáticas","Traducciones","Modelado 3D","Ilustración","Audio","Otros") DEFAULT "Otros",
       creation_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP
@@ -49,7 +49,7 @@ const main = async () => {
       entry_id int UNSIGNED NOT NULL,
       FOREIGN KEY(entry_id) REFERENCES entries(id),
       text TEXT,
-      file_name VARCHAR(100),
+      file_name VARCHAR(200),
       creation_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP
       )`);
 

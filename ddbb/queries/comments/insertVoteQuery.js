@@ -15,7 +15,7 @@ const insertVoteQuery = async (value, idUser, idEntry) => {
     );
     //Si lo hizo lanzamos un error.
     if (votes.length > 0) {
-      throw generateError("Ya valoraste esta entrada", 403);
+      throw generateError("Ya valoraste este comentario", 403);
     }
 
     //insertamos el voto
