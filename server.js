@@ -44,19 +44,23 @@ app.get("/users/:idUser", getUser);
 app.put("/users/avatar", isAuth, editAvatar);
 
 /**
- * ##########################
- * ## Controladores entries ##
- * ##########################
+ * ############################
+ * ## Controladores entradas ##
+ * ############################
  */
 const {
   newEntry,
   listEntries,
   getEntry,
   deleteEntry,
+  toggleSolved,
 } = require("./controllers/entries/index");
 
 // Crear una nueva entrada.
 app.post("/entries", isAuth, newEntry);
+
+//Marcar una entrada como resuelta
+app.put("/entries/:idEntry", isAuth, toggleSolved);
 
 // Listar todas las entradas.
 app.get("/entries", listEntries);
@@ -91,7 +95,6 @@ const { newRating, deleteRating } = require("./controllers/ratings/index");
 
 //Crear una nueva valoración.
 app.post("/entries/:idEntry/:idComment", isAuth, newRating);
-
 //Borrar una valoración.
 app.delete("/entries/:idEntry/:idComment/:idRating", isAuth, deleteRating);
 
