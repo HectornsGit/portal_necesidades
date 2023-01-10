@@ -26,6 +26,7 @@ const {
   newUser,
   getUser,
   editAvatar,
+  editUser,
 } = require("./controllers/users/index");
 
 // Registrar un nuevo usuario.
@@ -39,6 +40,9 @@ app.get("/users/");
 
 //Obtener información sobre un usuario
 app.get("/users/:idUser", getUser);
+
+//Editar el usuario
+app.put("/users/", isAuth, editUser);
 
 // Editar avatar de usuario.
 app.put("/users/avatar", isAuth, editAvatar);

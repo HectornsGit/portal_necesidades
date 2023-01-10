@@ -9,7 +9,7 @@ const selectUserByIdQuery = async (idUser) => {
     connection = await getConnection;
     //Seleccionamos al usuario segun su id en la base de datos.
     const [users] = await connection.query(
-      `SELECT id, email,avatar, password,username,registration_date FROM users WHERE id = ?`,
+      `SELECT id, email, avatar, bio, password, username, registration_date FROM users WHERE id = ?`,
       [idUser]
     );
     //Lanzamos un error si no se encuentra al usuario con ese id

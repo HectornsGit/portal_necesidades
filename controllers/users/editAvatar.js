@@ -2,7 +2,8 @@ const selectUserByIdQuery = require("../../ddbb/queries/users/selectUserByIdQuer
 const updateUserAvatarQuery = require("../../ddbb/queries/users/updateUserAvatarQuery");
 
 const { generateError, saveAvatar, deletePhoto } = require("../../helpers");
-const editAvatar = async () => {
+
+const editAvatar = async (req, res, next) => {
   try {
     //Comprobamos que haya un archivo
     if (!req.files?.avatar) {
@@ -22,7 +23,7 @@ const editAvatar = async () => {
     //Actualizamos en la base de datos el nuevo avatar.
     await updateUserAvatarQuery(avatar, req.user.id);
 
-    resizeBy.send({
+    res.send({
       status: "ok",
       message: `Avatar de usuario ${req.user.id} actualizado`,
     });

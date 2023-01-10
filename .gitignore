@@ -2,5 +2,4 @@
 /node_modules
 ddbb/portal_ayuda.sql
 .eslintrc.json
-controllers/users/plantillaConexionBaseDatos.example
 /uploads

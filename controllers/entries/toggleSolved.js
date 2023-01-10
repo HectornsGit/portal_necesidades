@@ -13,6 +13,7 @@ const toggleSolved = async (req, res, next) => {
     if (user_id != req.user.id) {
       throw generateError("No tienes permisos");
     }
+    //Llamamos a la función que modifica la entrada.
     await toggleSolvedQuery(entry);
 
     res.send({

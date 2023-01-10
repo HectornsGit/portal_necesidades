@@ -2,12 +2,14 @@
 
 Backend de un portal donde se pide ayuda para diferentes problemas (editar una imagen, traducir un texto...) y otra persona puede solucionarlas.
 
+## Es necesario Introducir en la carpeta uploads un avatar predeterminado con el nombre "default_avatar.png" !!!
+
 ## Endpoints de usuario
 
 - POST [/users] Permite registrar al usuario (email, contraseña, nombre, bio,foto) ✅
 - POST [/users/login] Login de usuario(email,contraseña) ✅
 - GET [/users/:idUser] Devuelve la información de un usuario ✅
-- (OPCIONAL)PUT [/users] Edita la información del usuario **TOKEN**
+- (OPCIONAL)PUT [/users] Edita la información del usuario **TOKEN**✅
 
 ## Endpoints de entries
 
