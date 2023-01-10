@@ -11,15 +11,21 @@ Backend de un portal donde se pide ayuda para diferentes problemas (editar una i
 - GET [/users/:idUser] Devuelve la información de un usuario ✅
 - (OPCIONAL)PUT [/users] Edita la información del usuario **TOKEN**✅
 
-## Endpoints de entries
+## Endpoints de entradas
 
 - POST [/entries] Permite crear una entrada **TOKEN** ✅
 - GET [/entries] Permite ver las entradas actuales ✅
 - GET [/entries?category=Otros] Permite ver las entradas filtrándolas por categorías ✅
 - POST [/entries/:idEntry] Permite comentar una entrada **TOKEN** ✅
-- POST [/entries/:idEntry/:idComment] Permite valorar un comentario **TOKEN**✅
 - (OPCIONAL)##DELETE[/entries/:idEntry] Permite borrar una entrada **TOKEN**✅
+
+## Endpoints de comentarios
+
 - (OPCIONAL)##DELETE[/entries/:idEntry/:idComment] Permite borrar un comentario **TOKEN**✅
+
+## Endpoints de valoraciones
+
+- POST [/entries/:idEntry/:idComment] Permite valorar un comentario **TOKEN**✅
 - (OPCIONAL)##DELETE[/entries/:idEntry/:idComment/:idRating] Permite borrar una valoración **TOKEN**✅
 
 ## Entidades
