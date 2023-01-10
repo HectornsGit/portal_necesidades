@@ -1,475 +1,432 @@
 {
-	"info": {
-		"_postman_id": "538ecafc-3791-4e46-9000-6b82caa5dad1",
-		"name": "portal_ayuda",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
-	},
-	"item": [
-		{
-			"name": "Users",
-			"item": [
-				{
-					"name": "NewUser Marge",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "formdata",
-							"formdata": [
-								{
-									"key": "username",
-									"value": "Marge",
-									"type": "default"
-								},
-								{
-									"key": "email",
-									"value": "MargeSimpson@gmail.com",
-									"type": "default"
-								},
-								{
-									"key": "password",
-									"value": "123456",
-									"type": "default"
-								},
-								{
-									"key": "bio",
-									"value": "Soy una madre de familia con un moño azul.",
-									"type": "default"
-								},
-								{
-									"key": "avatar",
-									"type": "file",
-									"src": "/C:/Users/hns_6/Downloads/night-cry-tome-0.jpg"
-								}
-							]
-						},
-						"url": {
-							"raw": "localhost:4000/users",
-							"host": [
-								"localhost"
-							],
-							"port": "4000",
-							"path": [
-								"users"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "NewUser Homer",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "formdata",
-							"formdata": [
-								{
-									"key": "username",
-									"value": "Homer",
-									"type": "default"
-								},
-								{
-									"key": "email",
-									"value": "HomerSimpson@gmail.com",
-									"type": "default"
-								},
-								{
-									"key": "password",
-									"value": "123456",
-									"type": "default"
-								},
-								{
-									"key": "bio",
-									"value": "Soy un hombretón muy apuesto y calvito.",
-									"type": "default"
-								},
-								{
-									"key": "avatar",
-									"type": "file",
-									"src": []
-								}
-							]
-						},
-						"url": {
-							"raw": "localhost:4000/users",
-							"host": [
-								"localhost"
-							],
-							"port": "4000",
-							"path": [
-								"users"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "LoginUser",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\"email\":\"MargeSimpson@gmail.com\",\"password\":\"123456\"}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "localhost:4000/users/login",
-							"host": [
-								"localhost"
-							],
-							"port": "4000",
-							"path": [
-								"users",
-								"login"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "GetUser",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "localhost:4000/users/1",
-							"host": [
-								"localhost"
-							],
-							"port": "4000",
-							"path": [
-								"users",
-								"1"
-							]
-						}
-					},
-					"response": []
-				}
-			]
-		},
-		{
-			"name": "Entries",
-			"item": [
-				{
-					"name": "ListEntries",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "{{TOKEN}}",
-								"type": "default"
-							}
-						],
-						"url": {
-							"raw": "localhost:4000/entries",
-							"host": [
-								"localhost"
-							],
-							"port": "4000",
-							"path": [
-								"entries"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "ListEntriesByCategory",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "{{TOKEN}}",
-								"type": "default"
-							}
-						],
-						"url": {
-							"raw": "localhost:4000/entries?category=Audio",
-							"host": [
-								"localhost"
-							],
-							"port": "4000",
-							"path": [
-								"entries"
-							],
-							"query": [
-								{
-									"key": "category",
-									"value": "Audio"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "DeleteEntry",
-					"request": {
-						"method": "DELETE",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNjczMjExNjkxLCJleHAiOjE2NzU4MDM2OTF9.44mWz4XlwKkBSZH7guU7EX636QGdnBaKNeesXBnyYd4",
-								"type": "default"
-							}
-						],
-						"url": {
-							"raw": "localhost:4000/entries/1",
-							"host": [
-								"localhost"
-							],
-							"port": "4000",
-							"path": [
-								"entries",
-								"1"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "NewEntry",
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "{{TOKEN}}",
-								"type": "default"
-							}
-						],
-						"body": {
-							"mode": "formdata",
-							"formdata": [
-								{
-									"key": "file",
-									"type": "file",
-									"src": "/C:/Users/hns_6/Downloads/539d87f676fd452589aab06777c4a51a.gif"
-								},
-								{
-									"key": "title",
-									"value": "Limpiar los canalones",
-									"type": "default"
-								},
-								{
-									"key": "description",
-									"value": "Homer debería limpiar los canalones de la casa.",
-									"type": "default"
-								},
-								{
-									"key": "category",
-									"value": "Audio",
-									"type": "default"
-								}
-							]
-						},
-						"url": {
-							"raw": "localhost:4000/entries",
-							"host": [
-								"localhost"
-							],
-							"port": "4000",
-							"path": [
-								"entries"
-							]
-						}
-					},
-					"response": []
-				}
-			]
-		},
-		{
-			"name": "Comments",
-			"item": [
-				{
-					"name": "NewComment",
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiaWF0IjoxNjczMjEwOTc0LCJleHAiOjE2NzU4MDI5NzR9.t1NX_5UGchpiOn_Z9gTVCLasfFBwwQUkMot8krIcRZ4",
-								"type": "default"
-							}
-						],
-						"body": {
-							"mode": "formdata",
-							"formdata": [
-								{
-									"key": "file",
-									"type": "file",
-									"src": "/C:/Users/hns_6/Downloads/Portal_de_necesidades (1).pdf"
-								},
-								{
-									"key": "text",
-									"value": "Ahí adjunto archivo limpieza canalones.",
-									"type": "default"
-								}
-							]
-						},
-						"url": {
-							"raw": "localhost:4000/entries/1",
-							"host": [
-								"localhost"
-							],
-							"port": "4000",
-							"path": [
-								"entries",
-								"1"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "DeleteComment",
-					"request": {
-						"method": "DELETE",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "{{TOKEN2}}",
-								"type": "default"
-							}
-						],
-						"body": {
-							"mode": "formdata",
-							"formdata": [
-								{
-									"key": "file",
-									"type": "file",
-									"src": "/C:/Users/hns_6/Downloads/Portal_de_necesidades (1).pdf"
-								},
-								{
-									"key": "text",
-									"value": "Aquí toda la info my man",
-									"type": "default"
-								}
-							]
-						},
-						"url": {
-							"raw": "localhost:4000/entries/1/1",
-							"host": [
-								"localhost"
-							],
-							"port": "4000",
-							"path": [
-								"entries",
-								"1",
-								"1"
-							]
-						}
-					},
-					"response": []
-				}
-			]
-		},
-		{
-			"name": "Ratings",
-			"item": [
-				{
-					"name": "NewRating",
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNjczMjExMzgyLCJleHAiOjE2NzU4MDMzODJ9.iocbzw7aFK0gGMc6ehtyYE0p0eY-wVmuyQCm09m_SQs",
-								"type": "default"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\"value\":4}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "localhost:4000/entries/1/1",
-							"host": [
-								"localhost"
-							],
-							"port": "4000",
-							"path": [
-								"entries",
-								"1",
-								"1"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "DeleteRating",
-					"request": {
-						"method": "DELETE",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNjczMjExMzgyLCJleHAiOjE2NzU4MDMzODJ9.iocbzw7aFK0gGMc6ehtyYE0p0eY-wVmuyQCm09m_SQs",
-								"type": "default"
-							}
-						],
-						"url": {
-							"raw": "localhost:4000/entries/1/1/1",
-							"host": [
-								"localhost"
-							],
-							"port": "4000",
-							"path": [
-								"entries",
-								"1",
-								"1",
-								"1"
-							]
-						}
-					},
-					"response": []
-				}
-			]
-		}
-	],
-	"event": [
-		{
-			"listen": "prerequest",
-			"script": {
-				"type": "text/javascript",
-				"exec": [
-					""
-				]
-			}
-		},
-		{
-			"listen": "test",
-			"script": {
-				"type": "text/javascript",
-				"exec": [
-					""
-				]
-			}
-		}
-	],
-	"variable": [
-		{
-			"key": "TOKEN",
-			"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNjcyODU4NDAwLCJleHAiOjE2NzU0NTA0MDB9.Fe_E2GFWuy35gmy0cFdwTiyrQG3R1wTwuf3kzVSMfPo",
-			"type": "default"
-		},
-		{
-			"key": "TOKEN2",
-			"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiaWF0IjoxNjcyOTMzODIxLCJleHAiOjE2NzU1MjU4MjF9.AmGkifjMTOF_ntzjwbRFUHb0J5C9F7MzW6xz6QjtUW0",
-			"type": "default"
-		}
-	]
+  "info": {
+    "_postman_id": "538ecafc-3791-4e46-9000-6b82caa5dad1",
+    "name": "portal_necesidades",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Users",
+      "item": [
+        {
+          "name": "NewUser Marge",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "username",
+                  "value": "Marge",
+                  "type": "default"
+                },
+                {
+                  "key": "email",
+                  "value": "MargeSimpson@gmail.com",
+                  "type": "default"
+                },
+                {
+                  "key": "password",
+                  "value": "123456",
+                  "type": "default"
+                },
+                {
+                  "key": "bio",
+                  "value": "Soy una madre de familia con un moño azul.",
+                  "type": "default"
+                },
+                {
+                  "key": "avatar",
+                  "type": "file",
+                  "src": "/C:/Users/hns_6/Downloads/night-cry-tome-0.jpg"
+                }
+              ]
+            },
+            "url": {
+              "raw": "localhost:4000/users",
+              "host": ["localhost"],
+              "port": "4000",
+              "path": ["users"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "NewUser Homer",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "username",
+                  "value": "Homer",
+                  "type": "default"
+                },
+                {
+                  "key": "email",
+                  "value": "HomerSimpson@gmail.com",
+                  "type": "default"
+                },
+                {
+                  "key": "password",
+                  "value": "123456",
+                  "type": "default"
+                },
+                {
+                  "key": "bio",
+                  "value": "Soy un hombretón muy apuesto y calvito.",
+                  "type": "default"
+                },
+                {
+                  "key": "avatar",
+                  "type": "file",
+                  "src": []
+                }
+              ]
+            },
+            "url": {
+              "raw": "localhost:4000/users",
+              "host": ["localhost"],
+              "port": "4000",
+              "path": ["users"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "LoginUser",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"email\":\"MargeSimpson@gmail.com\",\"password\":\"123456\"}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "localhost:4000/users/login",
+              "host": ["localhost"],
+              "port": "4000",
+              "path": ["users", "login"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GetUser",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "localhost:4000/users/1",
+              "host": ["localhost"],
+              "port": "4000",
+              "path": ["users", "1"]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Entries",
+      "item": [
+        {
+          "name": "ListEntries",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "{{TOKEN}}",
+                "type": "default"
+              }
+            ],
+            "url": {
+              "raw": "localhost:4000/entries",
+              "host": ["localhost"],
+              "port": "4000",
+              "path": ["entries"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "ListEntriesByCategory",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "{{TOKEN}}",
+                "type": "default"
+              }
+            ],
+            "url": {
+              "raw": "localhost:4000/entries?category=Audio",
+              "host": ["localhost"],
+              "port": "4000",
+              "path": ["entries"],
+              "query": [
+                {
+                  "key": "category",
+                  "value": "Audio"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "DeleteEntry",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNjczMjExNjkxLCJleHAiOjE2NzU4MDM2OTF9.44mWz4XlwKkBSZH7guU7EX636QGdnBaKNeesXBnyYd4",
+                "type": "default"
+              }
+            ],
+            "url": {
+              "raw": "localhost:4000/entries/1",
+              "host": ["localhost"],
+              "port": "4000",
+              "path": ["entries", "1"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "NewEntry",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "{{TOKEN}}",
+                "type": "default"
+              }
+            ],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "file",
+                  "type": "file",
+                  "src": "/C:/Users/hns_6/Downloads/539d87f676fd452589aab06777c4a51a.gif"
+                },
+                {
+                  "key": "title",
+                  "value": "Limpiar los canalones",
+                  "type": "default"
+                },
+                {
+                  "key": "description",
+                  "value": "Homer debería limpiar los canalones de la casa.",
+                  "type": "default"
+                },
+                {
+                  "key": "category",
+                  "value": "Audio",
+                  "type": "default"
+                }
+              ]
+            },
+            "url": {
+              "raw": "localhost:4000/entries",
+              "host": ["localhost"],
+              "port": "4000",
+              "path": ["entries"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "ToggleSolved",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNjczMjExNjkxLCJleHAiOjE2NzU4MDM2OTF9.44mWz4XlwKkBSZH7guU7EX636QGdnBaKNeesXBnyYd4",
+                "type": "default"
+              }
+            ],
+            "url": {
+              "raw": "localhost:4000/entries/3",
+              "host": ["localhost"],
+              "port": "4000",
+              "path": ["entries", "3"]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Comments",
+      "item": [
+        {
+          "name": "NewComment",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiaWF0IjoxNjczMjEwOTc0LCJleHAiOjE2NzU4MDI5NzR9.t1NX_5UGchpiOn_Z9gTVCLasfFBwwQUkMot8krIcRZ4",
+                "type": "default"
+              }
+            ],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "file",
+                  "type": "file",
+                  "src": "/C:/Users/hns_6/Downloads/Portal_de_necesidades (1).pdf"
+                },
+                {
+                  "key": "text",
+                  "value": "Ahí adjunto archivo limpieza canalones.",
+                  "type": "default"
+                }
+              ]
+            },
+            "url": {
+              "raw": "localhost:4000/entries/1",
+              "host": ["localhost"],
+              "port": "4000",
+              "path": ["entries", "1"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "DeleteComment",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "{{TOKEN2}}",
+                "type": "default"
+              }
+            ],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "file",
+                  "type": "file",
+                  "src": "/C:/Users/hns_6/Downloads/Portal_de_necesidades (1).pdf"
+                },
+                {
+                  "key": "text",
+                  "value": "Aquí toda la info my man",
+                  "type": "default"
+                }
+              ]
+            },
+            "url": {
+              "raw": "localhost:4000/entries/1/1",
+              "host": ["localhost"],
+              "port": "4000",
+              "path": ["entries", "1", "1"]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Ratings",
+      "item": [
+        {
+          "name": "NewRating",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNjczMjExMzgyLCJleHAiOjE2NzU4MDMzODJ9.iocbzw7aFK0gGMc6ehtyYE0p0eY-wVmuyQCm09m_SQs",
+                "type": "default"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"value\":4}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "localhost:4000/entries/1/1",
+              "host": ["localhost"],
+              "port": "4000",
+              "path": ["entries", "1", "1"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "DeleteRating",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNjczMjExMzgyLCJleHAiOjE2NzU4MDMzODJ9.iocbzw7aFK0gGMc6ehtyYE0p0eY-wVmuyQCm09m_SQs",
+                "type": "default"
+              }
+            ],
+            "url": {
+              "raw": "localhost:4000/entries/1/1/1",
+              "host": ["localhost"],
+              "port": "4000",
+              "path": ["entries", "1", "1", "1"]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ],
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "type": "text/javascript",
+        "exec": [""]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "type": "text/javascript",
+        "exec": [""]
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "TOKEN",
+      "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNjcyODU4NDAwLCJleHAiOjE2NzU0NTA0MDB9.Fe_E2GFWuy35gmy0cFdwTiyrQG3R1wTwuf3kzVSMfPo",
+      "type": "default"
+    },
+    {
+      "key": "TOKEN2",
+      "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiaWF0IjoxNjcyOTMzODIxLCJleHAiOjE2NzU1MjU4MjF9.AmGkifjMTOF_ntzjwbRFUHb0J5C9F7MzW6xz6QjtUW0",
+      "type": "default"
+    }
+  ]
 }
