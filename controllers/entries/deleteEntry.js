@@ -11,7 +11,7 @@ const deleteEntry = async (req, res, next) => {
     const { idEntry } = req.params;
     //Seleccionamos la entrada.
     const [entry] = await selectEntryByIdQuery(idEntry);
-    console.log(entry);
+    entry;
     // Si no somos los dueños lanzamos un error.
     if (entry.user_id !== req.user.id) {
       throw generateError("No tienes suficientes permisos", 401);

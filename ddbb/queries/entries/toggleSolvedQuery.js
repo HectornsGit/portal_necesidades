@@ -6,20 +6,13 @@ const toggleSolvedQuery = async (Entry) => {
   try {
     const { id, solved } = Entry;
     connection = await getConnection;
-    //Si no está resuelta la marcamos como tal.
-    if (!solved) {
-      connection.query(`UPDATE entries SET solved = ? WHERE id = ? `, [
-        true,
-        id,
-      ]);
-    }
-    //Si está resuelta la marcamos como no resuelta.
-    if (solved) {
-      connection.query(`UPDATE entries SET solved = ? WHERE id = ? `, [
-        false,
-        id,
-      ]);
-    }
+
+    //Marcamos como resuelta o no la entry.
+
+    connection.query(`UPDATE entries SET solved = ? WHERE id = ? `, [
+      !solved,
+      id,
+    ]);
   } finally {
     if (connection) connection.release();
   }

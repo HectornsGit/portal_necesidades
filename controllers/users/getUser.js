@@ -17,12 +17,10 @@ const getUser = async (req, res, next) => {
     const userInfo = {
       username: user.username,
       avatar: user.avatar,
+      bio: user.bio,
       registration_date: user.registration_date,
+      email: user.email,
     };
-
-    if (Number(idUser) === idUser) {
-      userInfo.email = user.email;
-    }
 
     res.send({
       status: "ok",

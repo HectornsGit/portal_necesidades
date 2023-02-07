@@ -8,7 +8,7 @@ const insertUserQuery = async (
   username,
   email,
   password,
-  bio,
+  bio = "",
   avatar = "default_avatar.png"
 ) => {
   let connection;

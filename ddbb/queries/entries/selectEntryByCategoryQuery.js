@@ -8,8 +8,12 @@ const selectEntryByCategoryQuery = async (category) => {
 
     //Seleccionamos la Entry segun la categoria establecida.
     const [entries] = await connection.query(
-      `SELECT id, user_id, title, description, file_name, category
-       FROM entries WHERE category = ?`,
+      `SELECT E.id, E.title, E.description, E.file_name, E.category, E.solved, COUNT(C.entry_id) as commentCount
+      FROM entries E
+      LEFT JOIN comments C ON C.entry_id = E.id
+      WHERE category = ?
+      GROUP BY E.id
+      `,
       [category]
     );
 

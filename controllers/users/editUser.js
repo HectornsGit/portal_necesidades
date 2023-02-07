@@ -32,6 +32,7 @@ const editUser = async (req, res, next) => {
     res.send({
       status: "ok",
       message: `Usuario ${req.user.id} actualizado`,
+      data: { email, username, bio, avatar },
     });
   } catch (err) {
     next(err);

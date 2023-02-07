@@ -6,15 +6,12 @@ const newComment = async (req, res, next) => {
     //Obtenemos la información necesaria de nuestra request.
     const { text } = req.body;
     const { idEntry } = req.params;
-    const file = req.files.file;
-
-    //Si no hay archivo, generamos un error.
-    if (!file) {
-      throw generateError("Falta adjuntar el archivo", 400);
-    }
-
+    const file = req.files?.file;
+    let fileName;
     //Guardamos el archivo y su nombre.
-    const fileName = saveFile(file);
+    if (req.files) {
+      fileName = saveFile(file);
+    }
 
     //Llamamos a la función encargada de registrar el comentario en la base de datos.
     await insertCommentQuery(req.user.id, idEntry, text, fileName);
@@ -22,6 +19,7 @@ const newComment = async (req, res, next) => {
     res.send({
       status: "ok",
       message: "Comment creado",
+      data: { text, fileName },
     });
   } catch (err) {
     next(err);

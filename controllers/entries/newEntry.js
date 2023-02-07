@@ -5,15 +5,18 @@ const { generateError, saveFile } = require("../../helpers");
 const newEntry = async (req, res, next) => {
   try {
     const { title, description, category } = req.body;
-    const files = req.files;
 
     //Si falta alguno de estos campos generamos un error.
-    if (!title || !description || !category || !files) {
+    if (!title || !description || !category) {
       throw generateError("Faltan campos", 400);
     }
 
-    //Guardamos el archivo a subir y su nombre.
-    const fileName = saveFile(req.files.file);
+    //Declaramos la variable donde irá el nombre de nuestro archivo.
+    let fileName;
+
+    if (req.files) {
+      fileName = saveFile(req.files?.file);
+    }
 
     //Guardamos la entrada en la base de datos.
     await insertEntryQuery(title, description, fileName, category, req.user.id);
@@ -21,6 +24,7 @@ const newEntry = async (req, res, next) => {
     res.send({
       status: "ok",
       message: "Entrada Creada",
+      data: { title, description, fileName, category },
     });
   } catch (err) {
     next(err);

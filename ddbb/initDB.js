@@ -8,14 +8,14 @@ const main = async () => {
     //Entablamos una conexión con la base de datos.
     connection = await getConnection;
 
-    console.log("Borrando tablas...");
+    ("Borrando tablas...");
     //Código para borrar las tablas si es que ya existiesen.
     await connection.query(`DROP TABLE IF EXISTS ratings`);
     await connection.query(`DROP TABLE IF EXISTS comments`);
     await connection.query(`DROP TABLE IF EXISTS entries`);
     await connection.query(`DROP TABLE IF EXISTS users`);
 
-    console.log("Creando tablas...");
+    ("Creando tablas...");
 
     //Creamos la tabla users.
     await connection.query(`CREATE TABLE IF NOT EXISTS users(
@@ -65,7 +65,7 @@ const main = async () => {
       UNIQUE(comment_id,user_id)
       )`);
 
-    console.log("Tablas creadas");
+    ("Tablas creadas");
   } catch (err) {
   } finally {
     //Cerramos la conexión con la base de datos si es que existe.
