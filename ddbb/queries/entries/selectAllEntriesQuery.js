@@ -9,9 +9,10 @@ const selectAllEntriesQuery = async () => {
 
     //Seleccionamos todas las entries de nuestra base de datos y las guardamos en una lista.
     const [entries] =
-      await connection.query(`SELECT E.id, E.title, E.description, E.file_name, E.category, E.solved, COUNT(C.entry_id) as commentCount
+      await connection.query(`SELECT E.id,U.username, E.title, E.description, E.file_name, E.category, E.solved, COUNT(C.entry_id) as commentCount
                                               FROM entries E
                                               LEFT JOIN comments C ON C.entry_id = E.id
+                                              LEFT JOIN users U ON U.id= E.user_id
                                               GROUP BY E.id`);
     if (entries.length < 1) {
       //Si no hubiese entradas lanzamos un error.
