@@ -14,6 +14,7 @@ const selectEntryByCategoryQuery = async (category) => {
       LEFT JOIN users U ON U.id= E.user_id
       WHERE category = ?
       GROUP BY E.id
+      ORDER BY E.creation_date DESC
       `,
       [category]
     );

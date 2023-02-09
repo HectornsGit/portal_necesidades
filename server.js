@@ -1,10 +1,12 @@
 require("dotenv").config();
+const path = require("path");
 const express = require("express");
 const fileUpload = require("express-fileupload");
 const morgan = require("morgan");
 const cors = require("cors");
-const { PORT } = process.env;
 const isAuth = require("./middlewares/isAuth");
+
+const { PORT, UPLOADS_DIR } = process.env;
 const app = express();
 
 app.use(cors());
@@ -14,6 +16,9 @@ app.use(morgan("dev"));
 app.use(express.json());
 
 app.use(fileUpload());
+
+// Middleware que indica cuál es el directorio de ficheros estáticos.
+app.use(express.static("uploads"));
 
 /**
  * ############################
