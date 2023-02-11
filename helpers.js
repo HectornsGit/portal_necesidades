@@ -74,7 +74,9 @@ const saveFile = (file) => {
     let newFile = file;
 
     //Le añadimos la fecha al nombre del archivo para asegurarnos que no hay dos iguales.
-    const fileName = `${new Date().toDateString()}-${newFile.name}`;
+    const fileName = `${new Date().toDateString().replaceAll(" ", "-")}-${
+      newFile.name
+    }`;
 
     //Guardamos el archivo en el servidor.
     newFile.mv(`./uploads/${fileName}`);
