@@ -15,12 +15,6 @@ const selectAllCommentsFromEntryQuery = async (idEntry, del) => {
       [idEntry]
     );
 
-    //Verificamos si el comentario existe.
-    if (comments.length < 1) {
-      if (del) return false; //Si queremos borrarlos y no existen lo ignoramos y devolvemos false.
-      throw generateError("No se ha encontrado ningun comentario", 404);
-    }
-
     //devuelve los comentarios.
     return comments;
   } finally {

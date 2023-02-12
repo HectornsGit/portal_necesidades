@@ -14,12 +14,23 @@ const newComment = async (req, res, next) => {
     }
 
     //Llamamos a la función encargada de registrar el comentario en la base de datos.
-    await insertCommentQuery(req.user.id, idEntry, text, fileName);
+    const idComment = await insertCommentQuery(
+      req.user.id,
+      idEntry,
+      text,
+      fileName
+    );
 
     res.send({
       status: "ok",
       message: "Comment creado",
-      data: { text, fileName },
+      data: {
+        id: idComment,
+        idUser: req.user.id,
+        text,
+        file_name: fileName,
+        creation_date: new Date(),
+      },
     });
   } catch (err) {
     next(err);
