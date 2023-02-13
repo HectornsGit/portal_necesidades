@@ -19,12 +19,26 @@ const newEntry = async (req, res, next) => {
     }
 
     //Guardamos la entrada en la base de datos.
-    await insertEntryQuery(title, description, fileName, category, req.user.id);
+    const idEntry = await insertEntryQuery(
+      title,
+      description,
+      fileName,
+      category,
+      req.user.id
+    );
 
     res.send({
       status: "ok",
       message: "Entrada Creada",
-      data: { title, description, fileName, category },
+      data: {
+        idUser: req.user.id,
+        id: idEntry,
+        title,
+        description,
+        file_name: fileName,
+        category,
+        creation_date: new Date(),
+      },
     });
   } catch (err) {
     next(err);

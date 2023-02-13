@@ -6,10 +6,12 @@ const newComment = async (req, res, next) => {
     //Obtenemos la información necesaria de nuestra request.
     const { text } = req.body;
     const { idEntry } = req.params;
+    console.log("OYE ", req.files);
     const file = req.files?.file;
     let fileName;
     //Guardamos el archivo y su nombre.
     if (req.files) {
+      console.log("EY, ", file);
       fileName = saveFile(file);
     }
 

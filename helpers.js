@@ -72,7 +72,6 @@ const saveFile = (file) => {
   try {
     //Guardamos el archivo en una variable.
     let newFile = file;
-
     //Le añadimos la fecha al nombre del archivo para asegurarnos que no hay dos iguales.
     const fileName = `${new Date().toDateString().replaceAll(" ", "-")}-${
       newFile.name
