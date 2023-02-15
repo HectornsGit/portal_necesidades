@@ -30,6 +30,7 @@ const newRating = async (req, res, next) => {
     res.send({
       status: "ok",
       message: "Valoracion enviada",
+      rating: value,
     });
   } catch (err) {
     next(err);

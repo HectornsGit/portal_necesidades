@@ -8,8 +8,13 @@ const selectEntryByIdQuery = async (idEntry) => {
 
     //Seleccionamos la entry segun su id
     const [entries] = await connection.query(
-      `SELECT id, user_id, title, description, file_name, category, solved
-       FROM entries WHERE id = ?`,
+      `SELECT E.id, U.username, E.title, E.description, E.file_name, E.category, E.solved,E.creation_date, E.user_id, U.avatar, COUNT(C.entry_id) as commentCount
+      FROM entries E
+      LEFT JOIN comments C ON C.entry_id = E.id
+      LEFT JOIN users U ON U.id= E.user_id
+      WHERE E.id=?
+      GROUP BY E.id
+      `,
       [idEntry]
     );
 
