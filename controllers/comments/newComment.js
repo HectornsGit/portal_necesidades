@@ -1,4 +1,5 @@
 const insertCommentQuery = require("../../ddbb/queries/comments/insertCommentQuery");
+const selectUserByIdQuery = require("../../ddbb/queries/users/selectUserByIdQuery");
 const { generateError, saveFile } = require("../../helpers");
 
 const newComment = async (req, res, next) => {
@@ -6,12 +7,11 @@ const newComment = async (req, res, next) => {
     //Obtenemos la información necesaria de nuestra request.
     const { text } = req.body;
     const { idEntry } = req.params;
-    console.log("OYE ", req.files);
+
     const file = req.files?.file;
     let fileName;
     //Guardamos el archivo y su nombre.
     if (req.files) {
-      console.log("EY, ", file);
       fileName = saveFile(file);
     }
 
@@ -23,6 +23,11 @@ const newComment = async (req, res, next) => {
       fileName
     );
 
+    //Llamamos a la función de seleccionar usuarios para poder devolver
+    //en la respuesta el avatar y el nombre del usuario que creo el comentario.
+
+    const userData = await selectUserByIdQuery(req.user.id);
+
     res.send({
       status: "ok",
       message: "Comment creado",
@@ -32,6 +37,8 @@ const newComment = async (req, res, next) => {
         text,
         file_name: fileName,
         creation_date: new Date(),
+        avatar: userData.avatar,
+        username: userData.username,
       },
     });
   } catch (err) {

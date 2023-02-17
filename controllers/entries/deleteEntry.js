@@ -12,6 +12,7 @@ const deleteEntry = async (req, res, next) => {
     //Seleccionamos la entrada.
     const [entry] = await selectEntryByIdQuery(idEntry);
     entry;
+
     // Si no somos los dueños lanzamos un error.
     if (entry.user_id !== req.user.id) {
       throw generateError("No tienes suficientes permisos", 401);
@@ -43,7 +44,9 @@ const deleteEntry = async (req, res, next) => {
     }
 
     //Borramos el archivo del ordenador y la entrada a continuación.
-    await deleteFile(entry.file_name);
+    if (entry.file_name) {
+      await deleteFile(entry.file_name);
+    }
     await deleteEntryQuery(idEntry);
 
     res.send({

@@ -1,6 +1,7 @@
 const selectCommentByIdQuery = require("../../ddbb/queries/comments/selectCommentByIdQuery");
 const deleteCommentQuery = require("../../ddbb/queries/comments/deleteCommentQuery");
 const selectAllRatingsFromCommentQuery = require("../../ddbb/queries/ratings/selectAllRatingsFromCommentQuery");
+const deleteRatingQuery = require("../../ddbb/queries/ratings/deleteRatingFromCommentQuery");
 const { generateError, deleteFile } = require("../../helpers");
 
 const deleteComment = async (req, res, next) => {
@@ -10,7 +11,7 @@ const deleteComment = async (req, res, next) => {
     const [comment] = await selectCommentByIdQuery(idComment);
 
     //Si no somos el dueño lanzamos error.
-    if (comment.user_id != req.user.id) {
+    if (comment.user_id !== req.user.id) {
       throw generateError("No tienes los permisos necesarios.");
     }
     //Seleccionamos las valoraciones del comentario.

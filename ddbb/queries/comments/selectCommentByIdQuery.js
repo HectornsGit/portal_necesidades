@@ -10,7 +10,7 @@ const selectCommentByIdQuery = async (idComment) => {
     const [comments] = await connection.query(
       `SELECT C.id, C.user_id, C.entry_id, C.text, C.file_name, C.creation_date, AVG(R.rating) as averageRating
       FROM comments C
-      INNER JOIN ratings R ON R.comment_id = C.id
+      LEFT JOIN ratings R ON R.comment_id = C.id
       WHERE C.id = ?;`,
       [idComment]
     );
