@@ -1,4 +1,5 @@
 const insertEntryQuery = require("../../ddbb/queries/entries/insertEntryQuery");
+const selectUserByIdQuery = require("../../ddbb/queries/users/selectUserByIdQuery");
 
 const { generateError, saveFile } = require("../../helpers");
 
@@ -27,6 +28,8 @@ const newEntry = async (req, res, next) => {
       req.user.id
     );
 
+    const userData = await selectUserByIdQuery(req.user.id);
+
     res.send({
       status: "ok",
       message: "Entrada Creada",
@@ -38,6 +41,8 @@ const newEntry = async (req, res, next) => {
         file_name: fileName,
         category,
         creation_date: new Date(),
+        username: userData.username,
+        avatar: userData.avatar,
       },
     });
   } catch (err) {

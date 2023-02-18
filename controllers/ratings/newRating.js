@@ -10,10 +10,10 @@ const newRating = async (req, res, next) => {
     const { value } = req.body;
 
     //Seleccionamos el comentario.
-    const comment = await selectCommentByIdQuery(idComment);
-
+    const [comment] = await selectCommentByIdQuery(idComment);
+    console.log(comment);
     //Restringimos el auto-voto
-    if (comment.idUser === req.user.id) {
+    if (comment.user_id === req.user.id) {
       throw generateError("No puedes valorar tu propio comment", 400);
     }
     //Array con las valoraciones validas
