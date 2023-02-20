@@ -8,9 +8,9 @@ const selectCommentByIdQuery = async (idComment) => {
 
     //Seleccionamos el comentario segun su id.
     const [comments] = await connection.query(
-      `SELECT C.id, C.user_id, C.entry_id, C.text, C.file_name, C.creation_date, AVG(R.rating) as averageRating
+      `SELECT C.id, C.user_id, C.entry_id, C.text, C.file_name, C.creation_date, COUNT(L.id) as likes
       FROM comments C
-      LEFT JOIN ratings R ON R.comment_id = C.id
+      LEFT JOIN likes L ON L.comment_id = C.id
       WHERE C.id = ?;`,
       [idComment]
     );

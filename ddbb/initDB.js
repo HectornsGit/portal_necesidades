@@ -12,7 +12,7 @@ const main = async () => {
     //Código para borrar las tablas si es que ya existiesen.
     await connection.query(`DROP TABLE IF EXISTS ratings`);
     await connection.query(`DROP TABLE IF EXISTS comments`);
-    await connection.query(`DROP TABLE IF EXISTS entries`);
+    await connection.query(`DROP TABLE IF EXISTS likes`);
     await connection.query(`DROP TABLE IF EXISTS users`);
 
     ("Creando tablas...");
@@ -54,18 +54,17 @@ const main = async () => {
       )`);
 
     //Creamos la tabla ratings.
-    await connection.query(`CREATE TABLE IF NOT EXISTS ratings(
+    await connection.query(`CREATE TABLE IF NOT EXISTS likes(
       id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
       user_id int UNSIGNED NOT NULL,
       FOREIGN KEY(user_id) REFERENCES users(id),
       comment_id int UNSIGNED NOT NULL,
       FOREIGN KEY(comment_id) REFERENCES comments(id),
-      rating ENUM("1", "2", "3", "4", "5"),
       creation_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
       UNIQUE(comment_id,user_id)
       )`);
 
-    ("Tablas creadas");
+    console.log("Tablas creadas");
   } catch (err) {
   } finally {
     //Cerramos la conexión con la base de datos si es que existe.

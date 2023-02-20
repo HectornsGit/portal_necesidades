@@ -100,12 +100,10 @@ app.delete("/entries/:idEntry/:idComment", isAuth, deleteComment);
  * ################################
  */
 
-const { newRating, deleteRating } = require("./controllers/ratings/index");
+const { newLike } = require("./controllers/likes/index");
 
 //Crear una nueva valoración.
-app.post("/entries/:idEntry/:idComment", isAuth, newRating);
-//Borrar una valoración.
-app.delete("/entries/:idEntry/:idComment/:idRating", isAuth, deleteRating);
+app.post("/entries/:idEntry/:idComment", isAuth, newLike);
 
 /**
  * ####################################

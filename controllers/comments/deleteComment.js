@@ -1,7 +1,7 @@
 const selectCommentByIdQuery = require("../../ddbb/queries/comments/selectCommentByIdQuery");
 const deleteCommentQuery = require("../../ddbb/queries/comments/deleteCommentQuery");
-const selectAllRatingsFromCommentQuery = require("../../ddbb/queries/ratings/selectAllRatingsFromCommentQuery");
-const deleteRatingQuery = require("../../ddbb/queries/ratings/deleteRatingFromCommentQuery");
+const selectAllLikesFromCommentQuery = require("../../ddbb/queries/likes/selectAllLikesFromCommentQuery");
+const deleteLikeQuery = require("../../ddbb/queries/likes/deleteLikeQuery");
 const { generateError, deleteFile } = require("../../helpers");
 
 const deleteComment = async (req, res, next) => {
@@ -14,13 +14,13 @@ const deleteComment = async (req, res, next) => {
     if (comment.user_id !== req.user.id) {
       throw generateError("No tienes los permisos necesarios.");
     }
-    //Seleccionamos las valoraciones del comentario.
-    const ratings = await selectAllRatingsFromCommentQuery(comment.id, 1);
+    //Seleccionamos los me gusta del comentario.
+    const likes = await selectAllLikesFromCommentQuery(comment.id, 1);
     //Si hubiese:
-    if (ratings) {
-      //Iteramos sobre las valoraciones y las borramos.
-      for (let rating of ratings) {
-        await deleteRatingQuery(rating.id);
+    if (likes) {
+      //Iteramos sobre los me gusta y las borramos.
+      for (let like of likes) {
+        await deleteLikeQuery(like.id);
       }
     }
     //Si hubiese un archivo vinculado al comentario lo eliminamos.
