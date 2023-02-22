@@ -16,7 +16,7 @@ const editUser = async (req, res, next) => {
     avatar = avatar || user.avatar;
     bio = bio || user.bio;
     username = username || user.username;
-
+    const registration_date = user.registration_date;
     //Si hay una foto la guardamos.
     if (req.files?.avatar) {
       //Si existe una foto ya establecida que no sea la por defecto la borramos.
@@ -32,7 +32,7 @@ const editUser = async (req, res, next) => {
     res.send({
       status: "ok",
       message: `Usuario ${req.user.id} actualizado`,
-      data: { email, username, bio, avatar },
+      data: { email, username, bio, avatar, registration_date },
     });
   } catch (err) {
     next(err);

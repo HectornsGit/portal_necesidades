@@ -14,7 +14,8 @@ const selectAllCommentsFromEntryQuery = async (idEntry, del) => {
       LEFT JOIN likes L on L.comment_id = C.id
       INNER JOIN users U on U.id = C.user_id
       WHERE E.id = ?
-      GROUP BY C.id`,
+      GROUP BY C.id
+      ORDER BY likes DESC`,
       [idEntry]
     );
 
