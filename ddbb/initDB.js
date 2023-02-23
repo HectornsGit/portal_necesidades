@@ -1,4 +1,5 @@
 require("dotenv").config();
+const { generateError } = require("../helpers");
 const getConnection = require("./getConnection");
 
 const main = async () => {
@@ -66,6 +67,7 @@ const main = async () => {
 
     console.log("Tablas creadas");
   } catch (err) {
+    throw generateError("Error al iniciar la base de datos");
   } finally {
     //Cerramos la conexión con la base de datos si es que existe.
     if (connection) {
