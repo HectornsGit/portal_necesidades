@@ -9,14 +9,14 @@ const main = async () => {
     //Entablamos una conexión con la base de datos.
     connection = await getConnection;
 
-    ("Borrando tablas...");
+    console.log("Borrando tablas...");
     //Código para borrar las tablas si es que ya existiesen.
-    await connection.query(`DROP TABLE IF EXISTS ratings`);
-    await connection.query(`DROP TABLE IF EXISTS comments`);
     await connection.query(`DROP TABLE IF EXISTS likes`);
+    await connection.query(`DROP TABLE IF EXISTS comments`);
+    await connection.query(`DROP TABLE IF EXISTS entries`);
     await connection.query(`DROP TABLE IF EXISTS users`);
 
-    ("Creando tablas...");
+    console.log("Creando tablas...");
 
     //Creamos la tabla users.
     await connection.query(`CREATE TABLE IF NOT EXISTS users(
@@ -54,7 +54,7 @@ const main = async () => {
       creation_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP
       )`);
 
-    //Creamos la tabla ratings.
+    //Creamos la tabla likes.
     await connection.query(`CREATE TABLE IF NOT EXISTS likes(
       id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
       user_id int UNSIGNED NOT NULL,

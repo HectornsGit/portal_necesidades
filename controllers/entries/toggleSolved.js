@@ -8,7 +8,8 @@ const toggleSolved = async (req, res, next) => {
 
     //seleccionamos la entry por el id
     const [entry] = await selectEntryByIdQuery(idEntry);
-    const { user_id, solved } = entry;
+    const { user_id } = entry;
+    const solved = entry.solved !== 1;
     //Si el usuario no es el creador no podrá editarla.
     if (user_id != req.user.id) {
       throw generateError("No tienes permisos");
@@ -18,9 +19,9 @@ const toggleSolved = async (req, res, next) => {
 
     res.send({
       status: "ok",
+      message: "Entrada modificada correctamente",
       data: {
-        message: "Entrada modificada correctamente",
-        data: { solved },
+        solved,
       },
     });
   } catch (err) {
