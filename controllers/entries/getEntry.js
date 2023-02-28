@@ -14,19 +14,20 @@ const getEntry = async (req, res, next) => {
     //seleccionamos todos los comments por el id de la entry
     const comments = await selectAllCommentsFromEntryQuery(idEntry);
 
-    let likes;
+    // let likes;
 
-    if (Object.entries(authorization).length > 0) {
-      let tokenInfo;
+    // if (Object.entries(authorization).length > 0) {
+    //   let tokenInfo;
 
-      tokenInfo = jwt.verify(authorization, process.env.SECRET);
+    //   tokenInfo = jwt.verify(authorization, process.env.SECRET);
 
-      likes = await selectLikeByUserQuery(tokenInfo.id);
-    }
+    //   likes = await selectLikeByUserQuery(tokenInfo.id);
+    // }
 
-    for (let comment of comments) {
-      for (let like of likes) comment.isLiked = like.comment_id === comment.id;
-    }
+    // for (let comment of comments) {
+    //   for (let like of likes)
+    //     comment.isLiked = like.comment_id === comment.id ? true : false;
+    // }
 
     res.send({
       status: "ok",
