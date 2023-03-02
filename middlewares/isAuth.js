@@ -7,7 +7,8 @@ const isAuth = async (req, res, next) => {
     const { authorization } = req.headers;
 
     if (!authorization) {
-      throw generateError("Falta la cabecera de autentificación", 400);
+      //throw generateError("Falta la cabecera de autentificación", 400);
+      return next();
     }
 
     let tokenInfo;

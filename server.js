@@ -5,6 +5,7 @@ const fileUpload = require("express-fileupload");
 const morgan = require("morgan");
 const cors = require("cors");
 const isAuth = require("./middlewares/isAuth");
+const isUser = require("./middlewares/isUser");
 
 const { PORT, UPLOADS_DIR } = process.env;
 const app = express();
@@ -41,16 +42,16 @@ app.post("/users", newUser);
 app.post("/users/login", loginUser);
 
 // Obtener información sobre el usuario del token.
-app.get("/users/");
+app.get("/users");
 
 //Obtener información sobre un usuario
 app.get("/users/:idUser", getUser);
 
 //Editar el usuario
-app.put("/users/", isAuth, editUser);
+app.put("/users", isUser, editUser);
 
 // Editar avatar de usuario.
-app.put("/users/avatar", isAuth, editAvatar);
+app.put("/users/avatar", isUser, editAvatar);
 
 /**
  * ############################
@@ -65,11 +66,14 @@ const {
   toggleSolved,
 } = require("./controllers/entries/index");
 
+//Comprobación de que es una petición con token
+app.use(isAuth);
+
 // Crear una nueva entrada.
-app.post("/entries", isAuth, newEntry);
+app.post("/entries", isUser, newEntry);
 
 //Marcar una entrada como resuelta
-app.put("/entries/:idEntry", isAuth, toggleSolved);
+app.put("/entries/:idEntry", isUser, toggleSolved);
 
 // Listar todas las entradas.
 app.get("/entries", listEntries);
@@ -78,7 +82,7 @@ app.get("/entries", listEntries);
 app.get("/entries/:idEntry", getEntry);
 
 //Borrar una entrada
-app.delete("/entries/:idEntry", isAuth, deleteEntry);
+app.delete("/entries/:idEntry", isUser, deleteEntry);
 
 /**
  * ###############################
@@ -89,10 +93,10 @@ app.delete("/entries/:idEntry", isAuth, deleteEntry);
 const { newComment, deleteComment } = require("./controllers/comments/index");
 
 // Crear un nuevo comentario.
-app.post("/entries/:idEntry", isAuth, newComment);
+app.post("/entries/:idEntry", isUser, newComment);
 
 //Borrar un comentario
-app.delete("/entries/:idEntry/:idComment", isAuth, deleteComment);
+app.delete("/entries/:idEntry/:idComment", isUser, deleteComment);
 
 /**
  * ################################
@@ -103,7 +107,7 @@ app.delete("/entries/:idEntry/:idComment", isAuth, deleteComment);
 const { newLike } = require("./controllers/likes/index");
 
 //Crear una nueva valoración.
-app.post("/entries/:idEntry/:idComment", isAuth, newLike);
+app.post("/entries/:idEntry/:idComment", isUser, newLike);
 
 /**
  * ####################################
