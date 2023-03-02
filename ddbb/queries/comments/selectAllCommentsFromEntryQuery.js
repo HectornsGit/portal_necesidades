@@ -8,6 +8,7 @@ const selectAllCommentsFromEntryQuery = async (idEntry, requestUser) => {
   try {
     connection = await getConnection;
 
+    //Si el usuario está loggeado comprobará los likes que ha hecho en esos comentarios, si no, no.
     const query = requestUser
       ? `
       SELECT 

@@ -7,12 +7,13 @@ const isAuth = async (req, res, next) => {
     const { authorization } = req.headers;
 
     if (!authorization) {
-      //throw generateError("Falta la cabecera de autentificación", 400);
+      //Si no hay cabecera de autentificación vamos al siguiente middleware.
       return next();
     }
 
     let tokenInfo;
 
+    //Si la hay guardamos la información del usuario.
     try {
       tokenInfo = jwt.verify(authorization, process.env.SECRET);
     } catch {
