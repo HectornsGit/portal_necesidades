@@ -20,7 +20,10 @@ const newLike = async (req, res, next) => {
       const message = await insertLikeQuery(req.user.id, idComment);
 
       //Seleccionamos el comentario.
-      const [updatedComment] = await selectCommentByIdQuery(idComment);
+      const [updatedComment] = await selectCommentByIdQuery(
+        idComment,
+        req.user
+      );
       const userData = await selectUserByIdQuery(updatedComment.user_id);
 
       res.send({
@@ -31,11 +34,12 @@ const newLike = async (req, res, next) => {
           entry_id: updatedComment.entry_id,
           user_id: updatedComment.user_id,
           text: updatedComment.text,
-          file_name: updatedComment.fileName,
+          file_name: updatedComment.file_name,
           creation_date: updatedComment.creation_date,
           likes: updatedComment.likes,
           avatar: userData.avatar,
           username: userData.username,
+          userLike: updatedComment.userLike,
         },
       });
     }
