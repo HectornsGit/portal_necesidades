@@ -3,6 +3,7 @@ const path = require("path");
 const sharp = require("sharp");
 const { v4: uuid } = require("uuid");
 const { UPLOADS_DIR } = process.env;
+
 /**
  * ##################
  * ## Save Avatar  ##
@@ -100,4 +101,9 @@ const generateError = (msg, status) => {
   return err;
 };
 
-module.exports = { generateError, saveAvatar, deleteFile, saveFile };
+module.exports = {
+  generateError,
+  saveAvatar,
+  deleteFile,
+  saveFile,
+};

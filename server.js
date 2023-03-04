@@ -21,6 +21,9 @@ app.use(fileUpload());
 // Middleware que indica cuál es el directorio de ficheros estáticos.
 app.use(express.static("uploads"));
 
+//Comprobación de que es una petición con token
+app.use(isAuth);
+
 /**
  * ############################
  * ## Controladores usuarios ##
@@ -65,9 +68,6 @@ const {
   deleteEntry,
   toggleSolved,
 } = require("./controllers/entries/index");
-
-//Comprobación de que es una petición con token
-app.use(isAuth);
 
 // Crear una nueva entrada.
 app.post("/entries", isUser, newEntry);
