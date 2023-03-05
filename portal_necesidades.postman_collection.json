@@ -213,7 +213,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{TOKEN}}",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywiaWF0IjoxNjc2OTExNTg5LCJleHAiOjE2Nzk1MDM1ODl9.cjboNvC4OBmlRTyxQ1gW7U710AsqOmRSsROX5Ax9rVg",
 								"type": "default"
 							}
 						],
@@ -448,10 +448,10 @@
 			]
 		},
 		{
-			"name": "Ratings",
+			"name": "Likes",
 			"item": [
 				{
-					"name": "NewRating",
+					"name": "NewLike",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -463,7 +463,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\"value\":4}",
+							"raw": "",
 							"options": {
 								"raw": {
 									"language": "json"
