@@ -59,10 +59,9 @@ Backend de un portal donde se pide ayuda para diferentes problemas (editar una i
   - file_name
   - creation_date
 
-- ratings:
+- likes:
 
   - id
   - user_id
   - comment_id
-  - rating
   - creation_date
