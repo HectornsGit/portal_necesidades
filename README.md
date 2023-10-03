@@ -24,7 +24,7 @@ Aplicación CRUD en express, una biblioteca node.js y Mysql. Gestiona usuarios, 
 
 1. Si utilizas postman como cliente http importa la colección que viene en el repositorio.
 
-1. Envía las peticiones http que desees a http://localhost:<puerto>/<endpoint>.
+1. Envía las peticiones http que desees a `http://localhost:<puerto>/<endpoint>`.
 
 ## Endpoints
 
