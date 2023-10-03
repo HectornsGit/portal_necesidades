@@ -1,32 +1,48 @@
 # Portal de necesidades
 
-Backend de un portal donde se pide ayuda para diferentes problemas (editar una imagen, traducir un texto...) y otra persona puede solucionarlas.
+Aplicación CRUD en express, una biblioteca node.js y Mysql. Gestiona usuarios, publicaciones con archivos, comentarios con archivos y likes para estos últimos.
 
-## Es necesario Introducir en la carpeta uploads un avatar predeterminado con el nombre "default_avatar.png" !!!
+## Requisitos
+- node.js
+- Mysql
+- cliente http cUrl o Postman(preferiblemente este último)
 
-## Endpoints de usuario
+## Instrucciones
+- Clona este repositorio.
+- Crea una base de datos MySQL.
+- Abre un terminal en la carpeta raíz e instala las dependencias escribiendo `npm i`.
+- Crea un fichero ".env" siguiendo la plantilla ".envExample" y rellena los campos tal que `CAMPO=valor`.
+- Inicia las tablas de la base de datos escribiendo `npm run initDB` en el terminal.
+- Añade una imagen png "default_avatar.png" como la que encontrarás en la carpeta "uploads" a la carpeta de archivos subidos ("uploads" por defecto).
+- Inicia el servidor introduciendo `npm run dev` en el terminal.
+- Si utilizas postman como cliente http importa la colección que viene en el repositorio.
+- Envía las peticiones http que desees a http://localhost:<puerto>/<endpoint>.
 
-- POST [/users] Permite registrar al usuario (email, contraseña, nombre, bio,foto) ✅
-- POST [/users/login] Login de usuario(email,contraseña) ✅
-- GET [/users/:idUser] Devuelve la información de un usuario ✅
-- (OPCIONAL)PUT [/users] Edita la información del usuario **TOKEN**✅
+## Endpoints
 
-## Endpoints de entradas
+### Usuarios
 
-- POST [/entries] Permite crear una entrada **TOKEN** ✅
-- GET [/entries] Permite ver las entradas actuales ✅
-- GET [/entries?category=Otros] Permite ver las entradas filtrándolas por categorías ✅
-- POST [/entries/:idEntry] Permite comentar una entrada **TOKEN** ✅
-- (OPCIONAL)##DELETE[/entries/:idEntry] Permite borrar una entrada **TOKEN**✅
+- POST `/users` Permite registrar al usuario (email, contraseña, nombre, bio, foto).
+- POST `/users/login` Login de usuario(email,contraseña).
+- GET `/users/:idUser` Devuelve la información de un usuario.
+- PUT `/users` Edita la información del usuario (Solo usuario registrado).
 
-## Endpoints de comentarios
+### Entradas
 
-- (OPCIONAL)##DELETE[/entries/:idEntry/:idComment] Permite borrar un comentario **TOKEN**✅
+- POST `/entries` Permite crear una entrada (Solo usuario registrado).
+- GET `/entries` Permite ver las entradas actuales.
+- GET `/entries?category=<categoría>` Permite ver las entradas filtrándolas por categorías.
+- POST `/entries/:idEntry` Permite comentar una entrada (Solo usuario registrado).
+- DELETE `/entries/:idEntry` Permite borrar una entrada (Solo usuario creador de la propia).
 
-## Endpoints de valoraciones
+### Comentarios
 
-- POST [/entries/:idEntry/:idComment] Permite valorar un comentario **TOKEN**✅
-- (OPCIONAL)##DELETE[/entries/:idEntry/:idComment/:idRating] Permite borrar una valoración **TOKEN**✅
+- DELETE `/entries/:idEntry/:idComment` Permite borrar un comentario (Solo usuario creador).
+
+### Likes
+
+- POST `/entries/:idEntry/:idComment` Permite valorar un comentario (Solo usuario registrado).
+- DELETE `/entries/:idEntry/:idComment/:idRating` Permite borrar una valoración (Solo usuario creador).
 
 ## Entidades
 
