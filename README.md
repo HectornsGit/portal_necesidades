@@ -8,15 +8,23 @@ Aplicación CRUD en express, una biblioteca node.js y Mysql. Gestiona usuarios, 
 - cliente http cUrl o Postman(preferiblemente este último)
 
 ## Instrucciones
-- Clona este repositorio.
-- Crea una base de datos MySQL.
-- Abre un terminal en la carpeta raíz e instala las dependencias escribiendo `npm i`.
-- Crea un fichero ".env" siguiendo la plantilla ".envExample" y rellena los campos tal que `CAMPO=valor`.
-- Inicia las tablas de la base de datos escribiendo `npm run initDB` en el terminal.
-- Añade una imagen png "default_avatar.png" como la que encontrarás en la carpeta "uploads" a la carpeta de archivos subidos ("uploads" por defecto).
-- Inicia el servidor introduciendo `npm run dev` en el terminal.
-- Si utilizas postman como cliente http importa la colección que viene en el repositorio.
-- Envía las peticiones http que desees a http://localhost:<puerto>/<endpoint>.
+1. Clona este repositorio.
+
+1. Crea una base de datos MySQL.
+
+1. Abre un terminal en la carpeta raíz e instala las dependencias escribiendo `npm i`.
+
+1. Crea un fichero ".env" siguiendo la plantilla ".envExample" y rellena los campos tal que `CAMPO=valor`.
+
+1. Inicia las tablas de la base de datos escribiendo `npm run initDB` en el terminal.
+
+1. Añade una imagen png "default_avatar.png" como la que encontrarás en la carpeta "uploads" a la carpeta de archivos subidos ("uploads" por defecto).
+
+1. Inicia el servidor introduciendo `npm run dev` en el terminal.
+
+1. Si utilizas postman como cliente http importa la colección que viene en el repositorio.
+
+1. Envía las peticiones http que desees a http://localhost:<puerto>/<endpoint>.
 
 ## Endpoints
 
